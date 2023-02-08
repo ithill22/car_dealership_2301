@@ -26,15 +26,31 @@ RSpec.describe Car do
     expect(car.monthly_payment).to eq(1500)
   end
 
-  xit 'has a loan length' do
+  it 'has a loan length' do
     car = Car.new("Ford Mustang", 1500, 36)
 
     expect(car.loan_length).to eq(36)
   end
 
-  xit 'has a total cost' do
+  it 'has a total cost' do
     car = Car.new("Ford Mustang", 1500, 36)
 
     expect(car.total_cost).to eq(54000)
   end
+
+  it 'has no color by defaul' do
+    car = Car.new("Ford Mustang", 1500, 36)
+    
+    expect(car.color).to eq(nil)
+  end
+
+  it 'can be painted a color' do
+    car = Car.new("Ford Mustang", 1500, 36)
+
+    car.paint!(:blue)
+
+    expect(car.color).to eq(:blue)
+  end
+
+
 end
