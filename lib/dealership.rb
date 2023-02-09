@@ -8,7 +8,6 @@ class Dealership
     @address = address
     @inventory = []
     @inventory_count = 0
-
   end
 
   def add_car(car)
@@ -31,5 +30,19 @@ class Dealership
   def details
     {total_value: total_value, address: @address}
   end
+
+  def average_price_of_car
+    (total_value).div(inventory_count).to_s.reverse.scan(/\d{3}|.+/).join(",").reverse
+  end
+
+  def cars_sorted_by_price
+    @inventory.sort_by{|car| car.total_cost}
+  end
+
+  def inventory_hash
+   makes = @inventory.filter{|car| car.make == make}
+  end
+
+
 end
    
